@@ -51,7 +51,7 @@ def parse_event(event, data):
     	color = 'blue'
     elif event == 'sale':
     	color = 'green'
-
+    
     switch_light(color, on)
     time.sleep(3)
     switch_light(color, off)
