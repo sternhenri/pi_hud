@@ -1,5 +1,6 @@
 #!flask/bin/python
 from flask import Flask
+from flask import request
 import time
 import RPi.GPIO as io
 
@@ -40,6 +41,10 @@ def switch_light(color, switch_type):
 
 @app.route('/shout_display/<event>/<data>')
 def parse_event(event, data):
+	puts request.remote_addr
+	if request.remote_addr != '107.170.62.101':
+		return 403
+
     if event == 'post':
     	color = 'yellow'
     elif event == 'signup':
@@ -50,10 +55,10 @@ def parse_event(event, data):
     switch_light(color, on)
     time.sleep(3)
     switch_light(color, off)
-
+    return 200
 
 if __name__ == '__main__':
 	setup_hardware()
 	turn_off_lights()
-	app.run()
+	app.run(host='0.0.0.0', port=80)
 
