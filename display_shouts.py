@@ -39,12 +39,17 @@ def switch_light(color, switch_type):
 
 	io.output(pin, switch_type)
 
-@app.route('/display/<event>/<data>')
-def parse_event(event, data='!'):
-	print request.remote_addr
-	# if request.remote_addr != '107.170.62.101':
-		# return 403
+@app.route('/display/<event>')
+def display(event):
 
+	print request.remote_addr
+#	if request.remote_addr != '107.170.62.101':
+#		return {'error': 'Access denied'}, 403
+#	else:
+#		return 'OK'
+
+#need callback instead
+	
 	if event == 'post':
 		color = 'yellow'
 	elif event == 'signup':
@@ -55,10 +60,10 @@ def parse_event(event, data='!'):
 	switch_light(color, on)
 	time.sleep(3)
 	switch_light(color, off)
-	return 200
+	return 'OK'
 
 if __name__ == '__main__':
 	setup_hardware()
 	turn_off_lights()
-	app.run(host='0.0.0.0', port=5000)
+	app.run(host='0.0.0.0')
 
