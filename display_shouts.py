@@ -8,14 +8,19 @@ app = Flask(__name__)
 def setup_hardware():
 	io.setmode(io.BCM)
 
-	global yellowPin = 18
-	global bluePin = 23
-	global greenPin = 24
+	global yellowPin
+	yellowPin = 18
+	global bluePin
+	bluePin = 23
+	global greenPin
+	greenPin = 24
 	io.setup(yellowPin, io.OUT)
 	io.setup(bluePin, io.OUT)
 	io.setup(greenPin, io.OUT)
-	global on = False
-	global off = True
+	global on 
+	on = False
+	global off
+	off = True
 
 def turn_off_lights():
 	io.output(yellowPin, off)
