@@ -45,17 +45,17 @@ def parse_event(event, data):
 	if request.remote_addr != '107.170.62.101':
 		return 403
 
-    if event == 'post':
-    	color = 'yellow'
-    elif event == 'signup':
-    	color = 'blue'
-    elif event == 'sale':
-    	color = 'green'
-    
-    switch_light(color, on)
-    time.sleep(3)
-    switch_light(color, off)
-    return 200
+	if event == 'post':
+		color = 'yellow'
+	elif event == 'signup':
+		color = 'blue'
+	elif event == 'sale':
+		color = 'green'
+
+	switch_light(color, on)
+	time.sleep(3)
+	switch_light(color, off)
+	return 200
 
 if __name__ == '__main__':
 	setup_hardware()
