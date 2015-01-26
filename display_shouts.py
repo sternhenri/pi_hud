@@ -50,5 +50,5 @@ def parse_event(event, data):
 if __name__ == '__main__':
 	setup_hardware()
 	turn_off_lights()
-    app.run()
+	app.run()
 
