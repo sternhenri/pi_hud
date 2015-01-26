@@ -41,7 +41,7 @@ def switch_light(color, switch_type):
 
 @app.route('/shout_display/<event>/<data>')
 def parse_event(event, data):
-	puts request.remote_addr
+	print request.remote_addr
 	if request.remote_addr != '107.170.62.101':
 		return 403
 
