@@ -39,11 +39,11 @@ def switch_light(color, switch_type):
 
 	io.output(pin, switch_type)
 
-@app.route('/shout_display/<event>/<data>')
-def parse_event(event, data):
+@app.route('/display/<event>/<data>')
+def parse_event(event, data='!'):
 	print request.remote_addr
-	if request.remote_addr != '107.170.62.101':
-		return 403
+	# if request.remote_addr != '107.170.62.101':
+		# return 403
 
 	if event == 'post':
 		color = 'yellow'
